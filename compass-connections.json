@@ -1,0 +1,41 @@
+{
+  "type": "Compass Connections",
+  "version": {
+    "$numberInt": "1"
+  },
+  "connections": [
+    {
+      "id": "4ae45e2a-2b27-49f2-bc15-7add0e30dca8",
+      "lastUsed": {
+        "$date": {
+          "$numberLong": "1733195439435"
+        }
+      },
+      "favorite": {
+        "name": "rent haven"
+      },
+      "savedConnectionType": "recent",
+      "connectionOptions": {
+        "connectionString": "mongodb://localhost:27017/",
+        "oidc": {}
+      }
+    },
+    {
+      "id": "4c6dbf7a-5089-4c77-aef8-6705e9c2c404",
+      "lastUsed": {
+        "$date": {
+          "$numberLong": "1733195433541"
+        }
+      },
+      "favorite": {
+        "name": ""
+      },
+      "savedConnectionType": "recent",
+      "connectionOptions": {
+        "connectionString": "mongodb://localhost:27017/",
+        "oidc": {}
+      }
+    }
+  ]
+}
+
