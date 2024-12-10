@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Haven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Kanit', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu li {
+        margin: 0;
+    }
+
+    .menu li a {
+        text-decoration: none;
+        color: black;
+        font-size: 14px;
+        padding: 10px 15px;
+        transition: color 0.3s, background-color 0.3s;
+    }
+
+    .menu li a:hover {
+        color: blue;
+    }
+
+    .hamburger {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    .logo{
+        height: 50px;
+    }
+    .user-icon {
+        font-size: 18px;
+    }
+
+    .user-icon a {
+        text-decoration: none;
+        color: black;
+        padding: 10px;
+    }
+
+    .user-icon a:hover {
+        color: blue;
+    }
+        .login-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+}
+
+.login-modal .form-hidden {
+    display: none;
+}
+.form-hidden {
+  display: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.extras p {
+  color: blue;
+  cursor: pointer;
+  margin: 5px 0;
+  text-decoration: underline;
+}
+
+.extras p:hover {
+  color: darkblue;
+}
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: block;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #04AA6D;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .cancelbtn {
+            background-color: #f44336;
+        }
+        .flag-icon {
+            height: 18px;
+            width: auto;
+            vertical-align: middle;
+            margin-right: 5px;
+        }  
+    .flag {
+    display: flex;
+    align-items: center;
+}
+
+.flag img {
+    width: 20px;
+    height: auto;
+    margin-right: 5px;
+}
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            margin-left: 100px;
+        }                 
+        .rent_haven {
+            position: absolute;
+            top: 20%;
+            left: 50%;  
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 70px; /* Adjust font size for visibility */
+            font-family: 'Kanit', sans-serif;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            z-index: 2;
+}
+        .picture {
+            width: 100%;
+            height: 620px;
+            object-fit: cover;
+            filter: brightness(35%);
+            position: relative;
+            z-index: 1;
+        }
+        .search-bar {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            gap: 10px;
+        }
+        .search-field {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border-right: 1px solid #ddd;
+            flex: 1;
+        }
+        .search-field input,
+        .search-field select {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            flex: 1;
+        }
+        .search-button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .search-button:hover {
+            background-color: darkblue;
+        }
+        .search-field i {
+            color: gray;
+            font-size: 18px;
+        }
+
+
+
+        .adds {
+            display: flex;
+            justify-content: center; /* Center the text horizontally */
+            align-items: center;    /* Center the text vertically */
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 1219px;
+            height: 82px;
+            margin: 20px auto; /* Add some margin above and below */
+            padding: 10px;
+            position: relative; /* Change to relative */
+            z-index: 1; /* Make sure it's below the search bar */
+            top: auto; /* Remove absolute positioning */
+            transform: none; /* Remove transformation */
+        }
+        .adds a{
+            font-size: 64px;
+            font-family: 'Kanit', sans-serif;
+        }
+        .popular-destinations {
+    padding: 20px;
+    text-align: center;
+}
+
+.popular-destinations h2,
+    .Rent_types h2 {
+        font-family: 'Kanit', sans-serif;
+        font-weight: bold;
+        font-size: 32px;
+        margin-bottom: 20px;
+        margin-right: 75%;
+    }
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.destination-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 415px;
+}
+
+.destination-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.destination-card p {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.destination-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+button.destination-card {
+    background: none;
+    border: none;
+    padding: 0;
+    outline: none;
+}
+.Rent_types {
+    padding: 20px;
+    text-align: center;
+}
+
+.Rent_types h2 {
+    font-size:32px;
+    margin-bottom: 20px;
+    margin-right: 75%;
+}
+
+.destination-grid2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.destination-card2 {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 300px;
+}
+
+.destination-card2 img {
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+}
+
+.destination-card2 p {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.destination-card2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+button.destination-card2 {
+    background: none;
+    border: none;
+    padding: 0;
+    outline: none;
+}
+@media screen and (max-width: 768px) {
+                .menu {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        border-radius: 8px;
+        z-index: 1000;
+            }
+            .menu.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+            .rent_haven {
+                font-size: 48px;
+            }
+            .search-bar {
+                flex-direction: column;
+                gap: 10px;
+                width: 90%;
+            }
+        }
+        @media (max-width: 480px) {
+            .adds a {
+                font-size: 18px;
+            }
+            .rent_haven {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="home.html">
+        <img src="449ddd2a-9bdd-4dfe-8900-546cfaba4135.jpg" alt="Rent Haven" class="logo">
+    </a>
+        <ul class="menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="rent_house.html">Rent house</a></li>
+            <li><a href="ulaanbaatar.html"><i class="fa-solid fa-earth"></i> Ulaanbaatar</a></li>
+            <li><a href="property.html">List your property</a></li>
+        </ul>
+        <div class="user-icon">
+            <a href="mongolia.html"><img src="https://flagcdn.com/w40/mn.png" alt="Mongolian Flag" class="flag-icon"> MNG</a>
+            <a href="#profile" onclick="toggleLoginModal()"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </div>
+    <div class="login-modal" id="login-modal" style="display: none;">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" placeholder="Enter your username" required />
+                
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" placeholder="Enter your password" required />
+                
+                <div class="buttons">
+                    <button type="submit">Login</button>
+                    <button type="button" onclick="cancelLogin()" class="cancelbtn">Cancel</button>
+                </div>
+            </form>
+            <div class="extras">
+                <p onclick="showForgotPasswordForm()">Forgot Password?</p>
+                <p onclick="showSignUpForm()">Sign up</p>
+            </div>
+        </div>
+    
+        <div class="form-hidden" id="forgot-password-form">
+            <h2>Forgot Password</h2>
+            <form>
+                <label for="email">Enter your email</label>
+                <input type="email" id="email" placeholder="Enter your email" />
+                <button type="submit">Submit</button>
+                <button type="button" onclick="backToLogin()">Back</button>
+            </form>
+        </div>
+    
+        <div class="form-hidden" id="sign-up-form">
+            <h2>Sign Up</h2>
+            <form id="signup-form">
+                <label for="signup-username">Username</label>
+                <input type="text" id="signup-username" placeholder="Choose a username" required />
+                
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" placeholder="Choose a password" required />
+                
+                <div class="buttons">
+                    <button type="submit">Register</button>
+                    <button type="button" onclick="backToLogin()">Back</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div style="position: relative;">
+        <img src="ce268c4cf6de8ae22d1cde6022a38d54.jpg" alt="background-img" class="picture">
+        <div class="rent_haven">Rent Haven</div>
+        <div class="search-bar">
+            <div class="search-field"><i class="fa-solid fa-location-dot"></i><input type="text" placeholder="Where to?"></div>
+            <div class="search-field"><i class="fa-solid fa-calendar"></i><input type="date"></div>
+            <div class="search-field"><i class="fa-solid fa-user"></i><select><option value="tourist">Tourist</option><option value="resident">Resident</option></select></div>
+            <button class="search-button">Search</button>
+        </div>
+    </div>
+    <div class="adds">
+        <a>
+        TANII RECLAMNII ORON ZAI
+        </a>
+    </div>
+    <section class="popular-destinations">
+        <h2>Popular destinations</h2>
+        <div class="destination-grid">
+            <div class="destination-card">
+                <img src="c0f7bca4eca373e82686a0932e35e8d1.jpg" alt="Ulaanbaatar">
+                <p>Ulaanbaatar</p>
+            </div>
+            <div class="destination-card">
+                <img src="57bc516bcb09c295801baa98b7e6ec11.jpg" alt="Erdenet">
+                <p>Erdenet</p>
+            </div>
+            <div class="destination-card">
+                <img src="darkhan-940x520.jpg" alt="Darkhan">
+                <p>Darkhan</p>
+            </div>
+        </div>
+    </section>
+    <section class="Rent_types">
+        <h2>Rent types</h2>
+        <div class="destination-grid2">
+            <div class="destination-card2">
+                <img src="4507a378f547bc32f7805c7f8e572abb.jpg" alt="Apartment">
+                <p>Apartment</p>
+            </div>
+            <div class="destination-card2">
+                <img src="a44150982b335f9c8806a46352b3bee1.jpg" alt="Yurts">
+                <p>Yurts</p>
+            </div>
+            <div class="destination-card2">
+                <img src="d524c987a9b00dac65d845fac0f69b4f (1).jpg" alt="House">
+                <p>House</p>
+            </div>
+            <div class="destination-card2">
+                <img src="7eb4b2d13fb3491e8bc3dec4e87f2115.jpg" alt="Countryside">
+                <p>Countryside</p>
+            </div>
+        </div>
+    </section>
+    <script>
+
+
+        // Toggle the hamburger menu on small screens
+        function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('active');
+}
+ // User Data Storage
+ const users = JSON.parse(localStorage.getItem("users")) || [];
+
+// Register User Function
+function registerUser(event) {
+    event.preventDefault();
+    const username = document.getElementById("signup-username").value;
+    const password = document.getElementById("signup-password").value;
+
+    if (!username || !password) {
+        showMessage("Please fill all fields!", "error");
+        return;
+    }
+
+    // Check if user already exists
+    const userExists = users.some(user => user.username === username);
+    if (userExists) {
+        showMessage("Username already taken.", "error");
+        return;
+    }
+
+    // Add New User
+    users.push({ username, password });
+    localStorage.setItem("users", JSON.stringify(users));
+    showMessage("Successfully registered!", "success");
+    document.getElementById("signup-form").reset();
+    backToLogin();
+}
+
+// Login User Function
+function loginUser(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("login-username").value;
+    const password = document.getElementById("login-password").value;
+
+    const user = users.find(user => user.username === username && user.password === password);
+
+    if (user) {
+        showMessage("Logged in successfully!", "success");
+        document.getElementById("login-form").reset();
+    } else {
+        showMessage("Incorrect username or password!", "error");
+    }
+}
+
+// Show Success or Error Message
+function showMessage(message, type) {
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("message", type);
+    messageDiv.innerText = message;
+    document.body.appendChild(messageDiv);
+
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 3000); // Hide after 3 seconds
+}
+
+// Modal Switching Functions
+function showForgotPasswordForm() {
+    document.querySelector('.login-form').style.display = 'none';
+    document.getElementById('forgot-password-form').style.display = 'block';
+}
+
+function showSignUpForm() {
+    document.querySelector('.login-form').style.display = 'none';
+    document.getElementById('sign-up-form').style.display = 'block';
+}
+
+function backToLogin() {
+    document.getElementById('forgot-password-form').style.display = 'none';
+    document.getElementById('sign-up-form').style.display = 'none';
+    document.querySelector('.login-form').style.display = 'block';
+}
+
+function cancelLogin() {
+    const modal = document.getElementById('login-modal');
+    modal.style.display = 'none';
+}
+
+// Toggle the login modal
+function toggleLoginModal() {
+    const modal = document.getElementById('login-modal');
+    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+}
+
+// Handle the Login & Sign Up Forms Submission
+document.getElementById('signup-form').addEventListener('submit', registerUser);
+document.getElementById('login-form').addEventListener('submit', loginUser);
+// Нэвтрэх функц
+function loginUser(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("login-username").value;
+    const password = document.getElementById("login-password").value;
+
+    // Хэрэглэгч байгаа эсэхийг шалгах
+    const user = users.find(user => user.username === username && user.password === password);
+
+    if (user) {
+        alert("Амжилттай нэвтэрлээ!");
+        document.getElementById("login-form").reset();
+    } else {
+        alert("Хэрэглэгчийн нэр эсвэл нууц үг буруу байна!");
+    }
+}
+loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  try {
+    const response = await fetch('http://localhost:5000/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert('Login successful!');
+      console.log(data); // Token эсвэл бусад мэдээллийг харуулах
+      // Эндээс дараагийн алхмуудыг чиглүүлж болно (жишээ нь, dashboard руу хөтлөх).
+    } else {
+      alert(`Error: ${data.message}`);
+    }
+  } catch (err) {
+    console.error('Error:', err);
+    alert('Server error. Please try again later.');
+  }
+});
+document.getElementById('signup-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      const response = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+
+      if (data.token) {
+        localStorage.setItem('token', data.token); // Store the token in localStorage
+        window.location.href = '/dashboard'; // Redirect to dashboard or home page
+      } else {
+        alert(data.message); // Display error message
+      }
+    });
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+
+      if (data.token) {
+        localStorage.setItem('token', data.token); // Store the token in localStorage
+        window.location.href = '/dashboard'; // Redirect to dashboard or home page
+      } else {
+        alert(data.message); // Display error message
+      }
+    });
+    </script>
+</body>
+</html>
